@@ -43,4 +43,5 @@ $ pnpm add -D vitest
 
 ## 解題進度
 
-- [29 - Easy 手寫 sleep](src/29-sleep)
+- [17 - `Easy` Remove Duplicates](src/17-deduplication)
+- [29 - `Easy` sleep](src/29-sleep)
