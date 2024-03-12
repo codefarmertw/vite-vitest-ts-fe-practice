@@ -126,7 +126,7 @@ const deduplicationWithObject = (arr: number[]) => {
 const deduplicationWithSet = (arr: number[]) => [...new Set(arr)];
 ```
 
-因為 `Set` 的特性是用來儲存為一值，在這個需求下剛好非常適合。
+因為 `Set` 的特性是用來儲存唯一值，在這個需求下剛好非常適合。
 
 也附上今天的 unit test：
 
