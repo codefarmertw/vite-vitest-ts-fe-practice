@@ -39,11 +39,8 @@ Promise.race([promise1, promise2]).then((value) => {
 由於這個 utility 比較複雜一些，先列出可能要顧及到的 test-cases 並寫成對應的單元測試：
 
 - 傳入 2 個都會成功的 promise 時，能回傳最快被 resolve 的
-
 - 傳入 1 個成功、1 個失敗的 promise 時，能實現或拒絕那個更快被完成的
-
 - 傳入多個 promise，能正確得到最快被完成的 promise 的值
-
 - edge cases：傳入空陣列應防呆
 
 
@@ -109,7 +106,7 @@ it('basic: resolve with the faster promise', async () => {
 
 
 
-詳細的 test-cases 單元測試可見 promiseRace.test.ts。
+詳細的 test-cases 單元測試可見 [promiseRace.test.ts](./promiseRace.test.ts)。
 
 
 
