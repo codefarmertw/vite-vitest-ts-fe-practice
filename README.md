@@ -45,3 +45,4 @@ $ pnpm add -D vitest
 
 - [17 - `Easy` Remove Duplicates](src/17-deduplication)
 - [29 - `Easy` sleep](src/29-sleep)
+- [30 - `Easy` Promise.race](src/30-promise-race)
