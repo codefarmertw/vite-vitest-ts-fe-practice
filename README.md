@@ -43,6 +43,7 @@ $ pnpm add -D vitest
 
 ## 解題進度
 
-- [17 - `Easy` Remove Duplicates](src/17-deduplication)
-- [29 - `Easy` sleep](src/29-sleep)
-- [30 - `Easy` Promise.race](src/30-promise-race)
+- Day01 - [29 - `Easy` sleep](src/29-sleep)
+- Day02 - [17 - `Easy` Remove Duplicates](src/17-deduplication)
+- Day03 - [30 - `Easy` Promise.race](src/30-promise-race)
+- Day04 - [01 - `Easy` clamp](src/01-clamp)
