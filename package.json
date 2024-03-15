@@ -7,6 +7,7 @@
     "test:all": "vitest",
     "test": "vitest --dir",
     "test-01": "vitest --dir ./src/01-clamp",
+    "test-02": "vitest --dir ./src/02-inRange",
     "test-17": "vitest --dir ./src/17-deduplication",
     "test-29": "vitest --dir ./src/29-sleep",
     "test-30": "vitest --dir ./src/30-promise-race"

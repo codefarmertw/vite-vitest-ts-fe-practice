@@ -47,3 +47,4 @@ $ pnpm add -D vitest
 - Day02 - [17 - `Easy` Remove Duplicates](src/17-deduplication)
 - Day03 - [30 - `Easy` Promise.race](src/30-promise-race)
 - Day04 - [01 - `Easy` clamp](src/01-clamp)
+- Day05 - [02 - `Easy` inRange](src/02-inRange)
