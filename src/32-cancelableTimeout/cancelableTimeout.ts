@@ -1,36 +1,27 @@
-type CancelableTimeoutResult<R> = {
-  cancel: () => void;
-  fnResult: Promise<R>;
-};
-
 const cancelableTimeout = <T extends unknown[], R>(
   fn: (...args: T) => R,
   args: [...T],
   timeout: number
-): CancelableTimeoutResult<R> => {
-  let timeoutId: number | null = null;
-  let isCancelled = false;
+) => {
+  let output: {
+    time: number;
+    returned: R;
+  }[] = [];
 
-  const fnResult = new Promise<R>((resolve, reject) => {
-    timeoutId = setTimeout(() => {
-      if (isCancelled) {
-        reject(new Error('fn has been canceled!'));
-      } else {
-        resolve(fn(...args));
-      }
-    }, timeout);
-  });
-
-  const cancelFn = () => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-      isCancelled = true;
-    }
-  };
+  const timeoutId = setTimeout(() => {
+    output.push({
+      time: timeout,
+      returned: fn(...args),
+    });
+  }, timeout);
 
   return {
-    cancel: cancelFn,
-    fnResult,
+    cancel: () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    },
+    output,
   };
 };
 
