@@ -2,7 +2,7 @@
 
 ## 更新
 
-在寫 33 題時，發現測試的部分可以用 fake timers 寫，詳細可見 [src/33-cancelableInterval](../src/33-cancelableInterval)
+在寫 33 題時，發現測試的部分可以用 fake timers 寫，詳細可見 [src/33-cancelableInterval](../33-cancelableInterval)
 
 ## 🔸 題目描述
 

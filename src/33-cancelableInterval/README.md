@@ -40,7 +40,7 @@ setTimeout(cancelFn, cancelTimeMs);
 
 ## 💭 分析與思路
 
-這題其實與 [32 題的 timeout cancellation](../src/32-cancelableTimeout) 蠻類似的，只差在將 `setTimeout` 相關的部分換成 `setInterval` ，因此蠻單純的直接調整如下，另外也整理一下不需要的型別：
+這題其實與 [32 題的 timeout cancellation](../32-cancelableTimeout) 蠻類似的，只差在將 `setTimeout` 相關的部分換成 `setInterval` ，因此蠻單純的直接調整如下，另外也整理一下不需要的型別：
 
 ```ts
 const cancelableInterval = <T extends unknown[], R>(
