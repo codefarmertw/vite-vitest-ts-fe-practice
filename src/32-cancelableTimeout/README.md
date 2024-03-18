@@ -1,5 +1,9 @@
 # 32. `Easy` Cancelable timeout (可取消的延遲函式)
 
+## 更新
+
+在寫 33 題時，發現測試的部分可以用 fake timers 寫，詳細可見 [src/33-cancelableInterval](src/33-cancelableInterval)
+
 ## 🔸 題目描述
 
 給定一個函式 `fn` ，一個參數陣列 `args` 和一個以毫秒為單位的超時時間 `t`，回傳一個取消函式 `cancelFn`。在`cancelTimeMs` 的延遲後取消函式 `cancelFn` 將被呼叫。
