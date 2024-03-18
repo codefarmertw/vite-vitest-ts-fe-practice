@@ -12,7 +12,8 @@
     "test-29": "vitest --dir ./src/29-sleep",
     "test-30": "vitest --dir ./src/30-promise-race",
     "test-31": "vitest --dir ./src/31-addPromises",
-    "test-32": "vitest --dir ./src/32-cancelableTimeout"
+    "test-32": "vitest --dir ./src/32-cancelableTimeout",
+    "test-33": "vitest --dir ./src/33-cancelableInterval"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
