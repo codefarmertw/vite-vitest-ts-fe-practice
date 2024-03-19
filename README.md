@@ -51,3 +51,4 @@ $ pnpm add -D vitest
 - Day06 - [31 - `Easy` add promises](src/31-addPromises)
 - Day07 - [32 - `Easy` cancelable timeout](src/32-cancelableTimeout)
 - Day08 - [33 - `Easy` cancelable interval](src/33-cancelableInterval)
+- Day09 - [34 - `Medium` repeat](src/34-repeat)
