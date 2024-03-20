@@ -52,3 +52,4 @@ $ pnpm add -D vitest
 - Day07 - [32 - `Easy` cancelable timeout](src/32-cancelableTimeout)
 - Day08 - [33 - `Easy` cancelable interval](src/33-cancelableInterval)
 - Day09 - [34 - `Medium` repeat](src/34-repeat)
+- Day10 - [05 - `Easy` dropWhile](src/05-dropWhile)
