@@ -1,19 +1,17 @@
-// solution 1. basic logic
-// const dropWhile = <T>(array: T[], predicate: (arg: T) => boolean) =>
-  // array.filter((a) => !predicate(a));
-
-
-const dropWhile = <T>(array: T[], predicate: (arg: T) => boolean) => {
+const dropWhile = <T>(
+  array: T[],
+  predicate: (value: T, index?: number, array?: T[]) => boolean
+) => {
   const result: T[] = [];
 
-  array.forEach((a) => {
-    if (!predicate(a)) {
-      result.push(a);
+  for (let i = 0; i < array.length; i++) {
+    if (!predicate(array[i], i, array)) {
+      result.push(...array.slice(i));
+      break;
     }
-  });
+  }
 
   return result;
-}
-
+};
 
 export default dropWhile;
