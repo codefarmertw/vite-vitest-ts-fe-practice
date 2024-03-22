@@ -54,3 +54,4 @@ $ pnpm add -D vitest
 - Day09 - [34 - `Medium` repeat](src/34-repeat)
 - Day10 - [05 - `Easy` lodash.dropWhile](src/05-dropWhile)
 - Day11 - [03 - `Easy` lodash.compact](src/03-compact)
+- Day12 - [04 - `Easy` lodash.difference](src/04-difference)
