@@ -56,3 +56,4 @@ $ pnpm add -D vitest
 - Day11 - [03 - `Easy` lodash.compact](src/03-compact)
 - Day12 - [04 - `Easy` lodash.difference](src/04-difference)
 - Day13 - [35 - `Medium` functions Promise.all](src/35-promiseAll)
+- Day14 - [06 - `Easy` lodash.dropRightWhile](06-dropRightWhile)
