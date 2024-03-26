@@ -21,7 +21,7 @@ const fromPairs1 = <T>(pairs: T[][]) => {
   }, {});
 };
 
-const fromPairs2 = <T>(pairs: T[][]) => Object.fromEntries(pairs)
+const fromPairs2 = <T>(pairs: T[][]) => Object.fromEntries(pairs);
 
 const fromPairs3 = <T>(pairs: T[][]) => {
   const result: Record<string | symbol, T> = {};
@@ -37,8 +37,4 @@ const fromPairs3 = <T>(pairs: T[][]) => {
   return result;
 };
 
-export {
-  fromPairs1,
-  fromPairs2,
-  fromPairs3
-};
+export { fromPairs1, fromPairs2, fromPairs3 };
