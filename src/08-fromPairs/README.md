@@ -103,7 +103,11 @@ const fromPairs = <T>(item: T[][]) => {
 
 ## 進階問題
 
-後來看到解答中有用了一個過去中沒用過的 Object 方法 `Object.fromEntries` ，看了一下完全就是在做這題的需求，也實際拿來跑了單元測試後發現其實他也能處理 falsy value，像是 `undefined` 當 key 時會被轉成 `“undefined“`
+後來看到解答中有用了一個過去中沒用過的 Object 方法 `Object.fromEntries` ，原來是 ES10 的新方法，看了一下完全就是在做這題的需求，也實際拿來跑了單元測試後發現其實他也能處理 falsy value，像是 `undefined` 當 key 時會被轉成 `“undefined“`
+
+```ts
+const fromPairs2 = <T>(pairs: T[][]) => Object.fromEntries(pairs);
+```
 
 所以調整原本的測試案例為：
 
