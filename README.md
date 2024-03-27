@@ -59,4 +59,5 @@ $ pnpm add -D vitest
 - Day14 - [06 - `Easy` lodash.dropRightWhile](src/06-dropRightWhile)
 - Day15 - [07 - `Easy` Array.fill](src/07-fill)
 - Day16 - [08 - `Easy` lodash.fromPairs](src/08-fromPairs)
+- Day17 - [14 - `Easy` lodash.findIndex](src/14-findIndex)
 
