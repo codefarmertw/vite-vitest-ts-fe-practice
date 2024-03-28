@@ -56,6 +56,7 @@ const testCases = [
     ],
     [NaN, NaN],
   ],
+  [[], []],
 ];
 
 it('Array.prototype.square', () => {
