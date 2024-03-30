@@ -62,4 +62,5 @@ $ pnpm add -D vitest
 - Day17 - [14 - `Easy` lodash.findIndex](src/14-findIndex)
 - Day18 - [15 - `Easy` Array.prototype.square](src/15-square)
 - Day19 - [16 - `Easy` Array.getAverage](src/16-getAverage)
+- Day20 - [18 - `Easy` Array.prototype.at](src/18-arrayPrototypeAt)
 
