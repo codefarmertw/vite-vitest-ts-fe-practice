@@ -1,4 +1,4 @@
-# 18. `Easy` 實作 Array.prototype.last
+# 19. `Easy` 實作 Array.prototype.last
 
 ## 🔸 題目描述
 
