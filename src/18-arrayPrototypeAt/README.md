@@ -34,7 +34,7 @@ arr.at(-3); // undefined
 - 能處理上述各種邊界狀況的輸入
 
 ```ts
-import { describe, expect, it } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import './at';
 
 const input = ['code', 'farmer', 'tw'];
@@ -140,23 +140,23 @@ const nonNumberCases = [
 ];
 
 describe('rewrite Array.prototype.at practice', () => {
-  it('should pass basic test cases', () => {
-    basicCases.forEach(({ index, expected }) => {
-      expect(input.at(index)).toBe(expected);
-    });
+  test.each(basicCases)('should pass basic test cases - %s', ({ index, expected }) => {
+    expect(input.at(index)).toBe(expected);
   });
 
-  it('should pass floating number test cases', () => {
-    floatingNumberCases.forEach(({ index, expected }) => {
+  test.each(floatingNumberCases)(
+    'should pass floating number test cases - %s',
+    ({ index, expected }) => {
       expect(input.at(index)).toBe(expected);
-    });
-  });
+    }
+  );
 
-  it('should pass non number test cases', () => {
-    nonNumberCases.forEach(({ index, expected }) => {
+  test.each(nonNumberCases)(
+    'should pass non number test cases - %s',
+    ({ index, expected }) => {
       expect(input.at(index)).toBe(expected);
-    });
-  });
+    }
+  );
 });
 ```
 
