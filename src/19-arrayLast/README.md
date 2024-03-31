@@ -76,7 +76,7 @@ describe('Array.prototype.last', () => {
 
 因為這題比較單純可以直接實作：
 
-```
+```ts
 interface Array<T> {
   last(): T | number;
 }
