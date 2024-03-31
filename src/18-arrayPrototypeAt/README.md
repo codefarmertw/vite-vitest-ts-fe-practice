@@ -215,7 +215,7 @@ Array.prototype.at = function <I, T>(index: I): T | undefined {
 簡單筆記一下處理：
 
 - 其實看了一下 TC39 原始定義 index 是有限制為 number，但想說前面都列好 test case 了，順便練習一下
-- 另外寫一個 `floatingToInteger` 去取整數，透過 test case 發現如果在取整數時，也要注意負數問題，要娶另一邊
+- 另外寫一個 `floatingToInteger` 去取整數，透過 test case 發現如果在取整數時，也要注意負數問題，要取另一邊
 - 轉型的部分其實最精簡可以在一開始就對 index 用 `Number()` 處理，最後判斷 `isNaN` 轉成 0 即可
 - 補充：發現原來 `Number([‘2’])` 會被轉成 2，頗酷
 
