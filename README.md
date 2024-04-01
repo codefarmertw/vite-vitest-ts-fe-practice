@@ -64,4 +64,5 @@ $ pnpm add -D vitest
 - Day19 - [16 - `Easy` Array.getAverage](src/16-getAverage)
 - Day20 - [18 - `Easy` Array.prototype.at](src/18-arrayPrototypeAt)
 - Day21 - [19 - `Easy` Array.prototype.last](src/19-arrayLast)
+- Day22 - [25 - `Medium` consolidate array data](src/25-consolidateData)
 
