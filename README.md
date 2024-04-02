@@ -65,4 +65,5 @@ $ pnpm add -D vitest
 - Day20 - [18 - `Easy` Array.prototype.at](src/18-arrayPrototypeAt)
 - Day21 - [19 - `Easy` Array.prototype.last](src/19-arrayLast)
 - Day22 - [25 - `Medium` consolidate array data](src/25-consolidateData)
+- Day23 - [20 - `Easy` lodash.chunk](src/20-chunk)
 
