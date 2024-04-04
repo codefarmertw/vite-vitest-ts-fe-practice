@@ -198,3 +198,20 @@ describe('promise with time limit', () => {
   });
 });
 ```
+
+不過後來看了解答後才發現原來可以用 `Promise.race` 來做更簡潔，然後確實輸出的 time 只是示意：
+
+```ts
+const promiseWithTimeLimit2 = <T extends unknown[], R>(
+  fn: InputPromiseFn<T, R>,
+  t: number
+) => {
+  return (...args: T) => {
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject('Time Limit Exceeded'), t)
+    );
+
+    return Promise.race([fn(...args), timeoutPromise]);
+  };
+};
+```

@@ -44,8 +44,23 @@ const promiseWithTimeLimit = <T extends unknown[], R>(
     });
 };
 
+// 筆記一個用 Promise.race 更簡潔的版本
+const promiseWithTimeLimit2 = <T extends unknown[], R>(
+  fn: InputPromiseFn<T, R>,
+  t: number
+) => {
+  return (...args: T) => {
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject('Time Limit Exceeded'), t)
+    );
+
+    return Promise.race([fn(...args), timeoutPromise]);
+  };
+};
+
 export {
   promiseWithTimeLimit as default,
+  promiseWithTimeLimit2,
   type RejectedResultType,
   type ResolvedResultType,
 };
