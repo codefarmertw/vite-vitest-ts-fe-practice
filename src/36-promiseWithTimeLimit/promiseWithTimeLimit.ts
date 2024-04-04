@@ -14,6 +14,7 @@ type ResultType<R> = ResolvedResultType<R> | RejectedResultType;
 
 type OutputPromiseFn<T extends unknown[], R> = (...args: T) => Promise<ResultType<R>>;
 
+// v1: 回傳 time 且沒用 Promise.race 的版本
 const promiseWithTimeLimit = <T extends unknown[], R>(
   fn: InputPromiseFn<T, R>,
   t: number
@@ -44,8 +45,41 @@ const promiseWithTimeLimit = <T extends unknown[], R>(
     });
 };
 
-// 筆記一個用 Promise.race 更簡潔的版本
-const promiseWithTimeLimit2 = <T extends unknown[], R>(
+// v2: 回傳 time 且用 Promise.race 的版本
+const promiseWithTimeLimitPromiseRace = <T extends unknown[], R>(
+  fn: InputPromiseFn<T, R>,
+  t: number
+): OutputPromiseFn<T, R> => {
+  const startTime = performance.now();
+
+  return (...args) => {
+    const timeoutPromise = new Promise<RejectedResultType>((_, reject) =>
+      setTimeout(
+        () =>
+          reject({
+            rejected: 'Time Limit Exceeded',
+            time: Math.ceil(performance.now() - startTime),
+          }),
+        t
+      )
+    );
+
+    const fnPromise = fn(...args)
+      .then((result) => ({
+        resolved: result,
+        time: Math.ceil(performance.now() - startTime),
+      }))
+      .catch((error) => ({
+        rejected: error instanceof Error ? error.message : String(error),
+        time: Math.ceil(performance.now() - startTime),
+      }));
+
+    return Promise.race([fnPromise, timeoutPromise]);
+  };
+};
+
+// v3: 不回傳 time 且用 Promise.race 的簡潔版本
+const promiseWithTimeLimitSimple = <T extends unknown[], R>(
   fn: InputPromiseFn<T, R>,
   t: number
 ) => {
@@ -60,7 +94,8 @@ const promiseWithTimeLimit2 = <T extends unknown[], R>(
 
 export {
   promiseWithTimeLimit as default,
-  promiseWithTimeLimit2,
+  promiseWithTimeLimitPromiseRace,
+  promiseWithTimeLimitSimple,
   type RejectedResultType,
   type ResolvedResultType,
 };

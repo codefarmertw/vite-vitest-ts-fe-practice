@@ -199,7 +199,7 @@ describe('promise with time limit', () => {
 });
 ```
 
-不過後來看了解答後才發現原來可以用 `Promise.race` 來做更簡潔，然後確實輸出的 time 只是示意：
+不過後來看了解答後才發現原來可以用 `Promise.race` 來做更簡潔，然後確實一開始看錯題目範例中輸出的 time 其實只是示意，並沒有包含在 `timeLimit` 的輸出中，所以其實這題可以更短：
 
 ```ts
 const promiseWithTimeLimit2 = <T extends unknown[], R>(
