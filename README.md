@@ -67,4 +67,5 @@ $ pnpm add -D vitest
 - Day22 - [25 - `Medium` consolidate array data](src/25-consolidateData)
 - Day23 - [20 - `Easy` lodash.chunk](src/20-chunk)
 - Day24 - [21 - `Easy` Array.map](src/21-arrayMap)
+- Day25 - [36 - `Medium` Promise with time limit](src/36-promiseWithTimeLimit)
 
