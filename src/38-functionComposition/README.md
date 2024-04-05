@@ -89,8 +89,7 @@ const compose = (functions: FunctionItem[]): FunctionItem => {
 如果去掉型別與縮寫後其實可以變成一行 code，但其實沒有很好讀就是 😆：
 
 ```javascript
-const compose = (functions) => (x) =>
-  [...functions].reverse().reduce((sum, fn) => fn(sum), x);
+const compose = (functions) => (x) => [...functions].reverse().reduce((sum, fn) => fn(sum), x);
 ```
 
 ## 進階
