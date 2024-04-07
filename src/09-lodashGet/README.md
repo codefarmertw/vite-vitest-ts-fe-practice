@@ -126,7 +126,7 @@ const get = <T, D>(object: T, pathParam: string | string[], defaultValue?: D) =>
 - 上面字串處理其實算整題最複雜的地方，當這沒問題後，剩下就是迭代取值，但這邊 reduce 的型別可能可以是 `D` 、`undefined` 、`Record<string, unknown>` 等，稍微有點懶得處理各種型別判斷，索性就先用 any 了 🥹
 - 最後補上如 path 為 falsy value 或空陣列、object 為 falsy value 的防呆
 
-單元測試的部分這題稍微複雜一些，除了 basic case 一開始確認能通過外，也補上不少 edge case，可直接參考[這個連結](src/09-lodashGet/get.test.ts) 。
+單元測試的部分這題稍微複雜一些，除了 basic case 一開始確認能通過外，也補上不少 edge case，可直接參考[這個連結](./get.test.ts) 。
 
 後來看了解答後發現其實字串處理的部分可以改成正規表達來簡化，一開始沒想到：
 
