@@ -70,4 +70,5 @@ $ pnpm add -D vitest
 - Day25 - [36 - `Medium` Promise with time limit](src/36-promiseWithTimeLimit)
 - Day26 - [38 - `Easy` Function Composition](src/38-functionComposition)
 - Day27 - [22 - `Easy` Array filter](src/22-filter)
+- Day28 - [09 - `Medium` lodash.get](src/09-lodashGet)
 
