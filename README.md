@@ -71,4 +71,5 @@ $ pnpm add -D vitest
 - Day26 - [38 - `Easy` Function Composition](src/38-functionComposition)
 - Day27 - [22 - `Easy` Array filter](src/22-filter)
 - Day28 - [09 - `Medium` lodash.get](src/09-lodashGet)
+- Day29 - [47 - `Easy` Calculator class](src/47-calculatorClass)
 
