@@ -72,4 +72,4 @@ $ pnpm add -D vitest
 - Day27 - [22 - `Easy` Array filter](src/22-filter)
 - Day28 - [09 - `Medium` lodash.get](src/09-lodashGet)
 - Day29 - [47 - `Easy` Calculator class](src/47-calculatorClass)
-
+- Day30 - [44 - `Easy` To Be or Not To Be, expect.toBe](src/44-expectToBe)
