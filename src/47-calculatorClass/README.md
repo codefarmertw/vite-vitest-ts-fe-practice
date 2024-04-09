@@ -69,25 +69,25 @@ export default class Calculator {
     this.result = initialValue;
   }
 
-  [ACTION_ENUM.ADD] = (value: number) => {
+  add(value: number) {
     this.result += value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.SUBTRACT] = (value: number) => {
+  subtract(value: number) {
     this.result -= value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.MULTIPLY] = (value: number) => {
+  multiply(value: number) {
     this.result *= value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.DIVIDE] = (value: number) => {
+  divide(value: number) {
     if (value === 0) {
       throw new Error('Division by zero is not allowed');
     }
@@ -95,27 +95,27 @@ export default class Calculator {
     this.result /= value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.POWER] = (value: number) => {
+  power(value: number) {
     this.result **= value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.GET_RESULT] = () => {
+  getResult() {
     return Number(this.result.toFixed(1));
-  };
+  }
 }
 ```
 
-如果是 JS 的話應該蠻單純的，而這裡為了要寫 TypeScript 版本的單元測試，把 class function name 們抽出來做成 enum `ACTION_ENUM`，另外在確認基本測資都通過後，也好奇補了一些 number 運算的 edge case 確認：
+另外補上單元測試：
 
 ```ts
-import { describe, expect, test, it } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import Calculator, { ACTION_ENUM } from './Calculator';
 
-const basicCases = [
+const testCases = [
   {
     title: 'basic case 1',
     actions: [ACTION_ENUM.ADD, ACTION_ENUM.SUBTRACT, ACTION_ENUM.GET_RESULT],
@@ -130,9 +130,6 @@ const basicCases = [
     values: [5, 2],
     expected: 100,
   },
-];
-
-const edgeCases = [
   {
     title: 'floating number calculation',
     actions: [
@@ -178,46 +175,36 @@ const edgeCases = [
     values: [2, NaN, 0],
     expected: NaN,
   },
+  {
+    title: 'divide by zero',
+    actions: [ACTION_ENUM.DIVIDE, ACTION_ENUM.GET_RESULT],
+    initialValue: 5,
+    values: [0],
+    expectedError: 'Division by zero is not allowed',
+  },
 ];
 
 describe('Calculator class', () => {
-  test.each(basicCases)(
-    'should pass basic test cases - $title',
-    ({ actions, initialValue, values, expected }) => {
-      let calculator = new Calculator(initialValue);
+  test.each(testCases)(
+    '$title',
+    ({ actions, initialValue, values, expected, expectedError }) => {
+      const calculator = new Calculator(initialValue);
 
-      actions.forEach((action, index) => {
-        if (action === ACTION_ENUM.GET_RESULT) {
-          expect(calculator.getResult()).toBe(expected);
-        } else {
-          calculator = calculator[action](values[index]);
+      try {
+        actions.forEach((action, index) => {
+          if (action === ACTION_ENUM.GET_RESULT) {
+            expect(calculator.getResult()).toBe(expected);
+          } else {
+            calculator[action](values[index]);
+          }
+        });
+      } catch (error) {
+        if (error instanceof Error) {
+          expect(error.message).toBe(expectedError);
         }
-      });
+      }
     }
   );
-
-  test.each(edgeCases)(
-    'should pass edge test cases - $title',
-    ({ actions, initialValue, values, expected }) => {
-      let calculator = new Calculator(initialValue);
-
-      actions.forEach((action, index) => {
-        if (action === ACTION_ENUM.GET_RESULT) {
-          expect(calculator.getResult()).toBe(expected);
-        } else {
-          calculator = calculator[action](values[index]);
-        }
-      });
-    }
-  );
-
-  it('should throw error if division by zero', () => {
-    let calculator = new Calculator(5);
-
-    expect(() => calculator[ACTION_ENUM.DIVIDE](0)).toThrowError(
-      'Division by zero is not allowed'
-    );
-  });
 });
 ```
 

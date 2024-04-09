@@ -1,7 +1,7 @@
-import { describe, expect, test, it } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import Calculator, { ACTION_ENUM } from './Calculator';
 
-const basicCases = [
+const testCases = [
   {
     title: 'basic case 1',
     actions: [ACTION_ENUM.ADD, ACTION_ENUM.SUBTRACT, ACTION_ENUM.GET_RESULT],
@@ -16,9 +16,6 @@ const basicCases = [
     values: [5, 2],
     expected: 100,
   },
-];
-
-const edgeCases = [
   {
     title: 'floating number calculation',
     actions: [
@@ -50,7 +47,7 @@ const edgeCases = [
     actions: [ACTION_ENUM.MULTIPLY, ACTION_ENUM.POWER, ACTION_ENUM.GET_RESULT],
     initialValue: Number.MAX_SAFE_INTEGER,
     values: [Number.MAX_SAFE_INTEGER, 2],
-    expected: 6.582018229284821e+63,
+    expected: 6.582018229284821e63,
   },
   {
     title: 'NaN case',
@@ -64,44 +61,34 @@ const edgeCases = [
     values: [2, NaN, 0],
     expected: NaN,
   },
+  {
+    title: 'divide by zero',
+    actions: [ACTION_ENUM.DIVIDE, ACTION_ENUM.GET_RESULT],
+    initialValue: 5,
+    values: [0],
+    expectedError: 'Division by zero is not allowed',
+  },
 ];
 
 describe('Calculator class', () => {
-  test.each(basicCases)(
-    'should pass basic test cases - $title',
-    ({ actions, initialValue, values, expected }) => {
-      let calculator = new Calculator(initialValue);
+  test.each(testCases)(
+    '$title',
+    ({ actions, initialValue, values, expected, expectedError }) => {
+      const calculator = new Calculator(initialValue);
 
-      actions.forEach((action, index) => {
-        if (action === ACTION_ENUM.GET_RESULT) {
-          expect(calculator.getResult()).toBe(expected);
-        } else {
-          calculator = calculator[action](values[index]);
+      try {
+        actions.forEach((action, index) => {
+          if (action === ACTION_ENUM.GET_RESULT) {
+            expect(calculator.getResult()).toBe(expected);
+          } else {
+            calculator[action](values[index]);
+          }
+        });
+      } catch (error) {
+        if (error instanceof Error) {
+          expect(error.message).toBe(expectedError);
         }
-      });
+      }
     }
   );
-
-  test.each(edgeCases)(
-    'should pass edge test cases - $title',
-    ({ actions, initialValue, values, expected }) => {
-      let calculator = new Calculator(initialValue);
-
-      actions.forEach((action, index) => {
-        if (action === ACTION_ENUM.GET_RESULT) {
-          expect(calculator.getResult()).toBe(expected);
-        } else {
-          calculator = calculator[action](values[index]);
-        }
-      });
-    }
-  );
-
-  it('should throw error if division by zero', () => {
-    let calculator = new Calculator(5);
-
-    expect(() => calculator[ACTION_ENUM.DIVIDE](0)).toThrowError(
-      'Division by zero is not allowed'
-    );
-  });
 });

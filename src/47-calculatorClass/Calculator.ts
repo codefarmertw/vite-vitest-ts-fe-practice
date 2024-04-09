@@ -14,25 +14,25 @@ export default class Calculator {
     this.result = initialValue;
   }
 
-  [ACTION_ENUM.ADD] = (value: number) => {
+  add(value: number) {
     this.result += value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.SUBTRACT] = (value: number) => {
+  subtract(value: number) {
     this.result -= value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.MULTIPLY] = (value: number) => {
+  multiply(value: number) {
     this.result *= value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.DIVIDE] = (value: number) => {
+  divide(value: number) {
     if (value === 0) {
       throw new Error('Division by zero is not allowed');
     }
@@ -40,15 +40,15 @@ export default class Calculator {
     this.result /= value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.POWER] = (value: number) => {
+  power(value: number) {
     this.result **= value;
 
     return this;
-  };
+  }
 
-  [ACTION_ENUM.GET_RESULT] = () => {
+  getResult() {
     return Number(this.result.toFixed(1));
-  };
+  }
 }
